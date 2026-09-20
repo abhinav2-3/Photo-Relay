@@ -20,6 +20,7 @@ const UPLOAD_DIR = path.join(__dirname, "..", "uploads");
 
 if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR);
 
+app.set("trust proxy", 1);
 app.use(cors());
 
 let receiverSocket: Socket | null = null;
