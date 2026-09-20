@@ -276,13 +276,16 @@ app.post(
         return res.status(500).send("Failed to read file");
       }
 
-      if (receiverSocket) {
-        receiverSocket.emit("new-media", {
-          filename: originalName,
-          mimeType,
-          data: data.toString("base64"),
-        });
+      if (!receiverSocket) {
+        fs.unlink(filePath, () => { });
+        return res.status(503).send("Receiver not online, try again later");
       }
+
+      receiverSocket.emit("new-media", {
+        filename: originalName,
+        mimeType,
+        data: data.toString("base64"),
+      });
 
       fs.unlink(filePath, () => { });
       res.send("Uploaded successfully");
