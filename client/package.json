@@ -1,0 +1,19 @@
+{
+  "name": "photo-relay-client",
+  "version": "1.0.0",
+  "main": "dist/client.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/client.js",
+    "dev": "ts-node src/client.ts"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.5",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
